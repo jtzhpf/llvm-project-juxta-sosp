@@ -68,6 +68,7 @@ void llvm::initializeAnalysis(PassRegistry &Registry) {
   initializeTargetTransformInfoAnalysisGroup(Registry);
   initializeTypeBasedAliasAnalysisPass(Registry);
   initializeScopedNoAliasAAPass(Registry);
+  initializeFsSemanticPass(Registry);
 }
 
 void LLVMInitializeAnalysis(LLVMPassRegistryRef R) {

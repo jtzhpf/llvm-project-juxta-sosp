@@ -15,6 +15,8 @@
 #ifndef LLVM_ANALYSIS_PASSES_H
 #define LLVM_ANALYSIS_PASSES_H
 
+#include "llvm/ADT/StringRef.h"
+
 namespace llvm {
   class FunctionPass;
   class ImmutablePass;
@@ -162,6 +164,8 @@ namespace llvm {
   // createJumpInstrTableInfoPass - This creates a pass that stores information
   // about the jump tables created by JumpInstrTables
   ImmutablePass *createJumpInstrTableInfoPass();
+
+FunctionPass *createFsSemanticFunctionPass(StringRef ConfFile, StringRef OutDir);
 }
 
 #endif

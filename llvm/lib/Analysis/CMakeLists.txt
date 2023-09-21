@@ -58,6 +58,7 @@ add_llvm_library(LLVMAnalysis
   TypeBasedAliasAnalysis.cpp
   ScopedNoAliasAA.cpp
   ValueTracking.cpp
+  FsSemantic.cpp
   )
 
 add_dependencies(LLVMAnalysis intrinsics_gen)

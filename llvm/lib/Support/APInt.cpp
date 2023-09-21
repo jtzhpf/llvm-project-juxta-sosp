@@ -1863,7 +1863,11 @@ APInt APInt::udiv(const APInt& RHS) const {
 
   // First, deal with the easy case
   if (isSingleWord()) {
-    assert(RHS.VAL != 0 && "Divide by zero?");
+    // FIXME:FSS [[ assert(RHS.VAL != 0 && "Divide by zero?");
+    if (RHS.VAL == 0)
+      return APInt(BitWidth, 0xffffffffffffffff);
+    // FIXME:FSS ]]
+
     return APInt(BitWidth, VAL / RHS.VAL);
   }
 
@@ -1909,7 +1913,11 @@ APInt APInt::sdiv(const APInt &RHS) const {
 APInt APInt::urem(const APInt& RHS) const {
   assert(BitWidth == RHS.BitWidth && "Bit widths must be the same");
   if (isSingleWord()) {
-    assert(RHS.VAL != 0 && "Remainder by zero?");
+    // FIXME:FSS [[ assert(RHS.VAL != 0 && "Remainder by zero?");
+    if (RHS.VAL == 0)
+      return APInt(BitWidth, 0);
+    // FIXME:FSS ]]
+    
     return APInt(BitWidth, VAL % RHS.VAL);
   }
 
